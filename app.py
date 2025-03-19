@@ -56,6 +56,8 @@ if st.button ("convert ") :
     elif  conversion_type == "temperature ":
         result = temperature_convertor (value,from_unit,to_unit)
 
-    st.markdown (f"<div class = 'result-box'> {value} {from_unit } = {result: .4f} {to_unit} </div> ", unsafe_allow_html=True )
+ st.markdown(f"<div class='result-box'>Result: {result:.4f} {to_unit}</div>", unsafe_allow_html=True)
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
 
 st.markdown ("<div class = 'footer'> created by Shifa Nawed </div> ", unsafe_allow_html=True  )
