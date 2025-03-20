@@ -4,25 +4,25 @@
 import streamlit as st 
 st.title("Unit Converter App ")
 
-conversion_type = st.sidebar.selectbox("choose converversion type ",["lenght","weight","temperature "]) 
+conversion_type = st.sidebar.selectbox("choose converversion type ",["length","weight","temperature "]) 
 value = st.number_input("enter value",value=0.0,min_value=0.0,step=0.1)
 col1, col2= st.columns (2)
  
-if conversion_type == "lenght":
+if conversion_type == "length":
     with col1 : 
-        from_unit = st.selectbox("from" , ["meters","kilograms","centimeter","milimeter","miles","yards","feet","inches"])
+        from_unit = st.selectbox("from" , ["meters","kilograms","centimeter","millimeter","miles","yards","feet","inches"])
     with col2:
-        to_unit = st.selectbox ("to",["meters","kilograms","centimeter","milimeter","miles","yards","feet","inches"])
+        to_unit = st.selectbox ("to",["meters","kilograms","centimeter","millimeter","miles","yards","feet","inches"])
 elif conversion_type == "weight":
     with col1:
-        from_unit = st.selectbox("from",["kilogram","grams","miligrams","pounds","miles","pounds"]) 
+        from_unit = st.selectbox("from",["kilogram","grams","milligrams","pounds","miles","pounds"]) 
     with col2 :
-        to_unit= st.selectbox("To",["kilogram","grams","miligrams","pounds","miles","pounds"] )
+        to_unit= st.selectbox("To",["kilogram","grams","milligrams","pounds","miles","pounds"] )
 elif conversion_type == "temperature ": 
     with col1:
-        from_unit = st.selectbox ("from",["celsis","fahrenheit","kelvin"])
+        from_unit = st.selectbox ("from",["celsius","fahrenheit","kelvin"])
     with col2:
-        to_unit = st.selectbox ("to",["celsis","fahrenheit","kelvin"])
+        to_unit = st.selectbox ("to",["celsius","fahrenheit","kelvin"])
  
 
 def lenght_convertor (value ,from_unit, to_unit):
@@ -35,7 +35,7 @@ def lenght_convertor (value ,from_unit, to_unit):
     
 def weight_convertor(value, from_unit, to_unit):
     weight_units = {
-        'kilogram': 1,'grams':1000,'miligrams' : 1000000,'pounds': 2.2046
+        'kilogram': 1,'grams':1000,'milligrams' : 1000000,'pounds': 2.2046
         }
     return (value / weight_units[from_unit]) * weight_units[to_unit]
 
@@ -49,10 +49,10 @@ def temperature_convertor(value, from_unit, to_unit):
     return value 
 
 if st.button ("convert ") :
-    if conversion_type == "lenght ":
-        result = lenght_convertor (value,from_unit,to_unit)  
+    if conversion_type == "length ":
+        result = length_convertor (value,from_unit,to_unit)  
     elif conversion_type == "weight":
-        result = weight_convertor (value,from_unit,to_unit)
+        result = weigth_convertor (value,from_unit,to_unit)
     elif  conversion_type == "temperature ":
         result = temperature_convertor (value,from_unit,to_unit)
 
